@@ -1,0 +1,35 @@
+
+#procesarPregunta
+
+>> procesarPregunta()
+while(true){
+	Pregunta unaPregunta = self.obtenerPreguntaTexto()
+	self.buscarRespuesta(unaPregunta)
+
+
+}
+
+>>obtenerPreguntaTexto()
+Audio unAudio = capturadorDeSonido.siguientePreguntaSinProcesar()
+String pregunta = DecodificadorDeAudio.convertirAtexto()
+Usuario unUsuario = capturadorDeSonido.usuarioQueRealizoLaPregunta()
+Pregunta unaPregunta = new Pregunta(pregunta,unUsuario)
+^unaPregunta
+
+>>buscarRespuesta(unaPregunta)
+conocimientos.forEach[:unConocimiento | unConocimiento.buscarRespuesta(unaPregunta) ]
+
+#Conocimiento
+>>buscarRespuesta(unaPregunta)
+//se comunica con alguna api de matematicas y le hace esa pregunta, si no puede responder la pregunta no hace nada,
+y si puede responder hace: unaPregunta.guardarRespuesta(String respuesta)
+
+#IdiomaGriego
+>>>>buscarRespuesta(unaPregunta)
+//hace lo mismo
+
+
+#Geolocalizacion
+>>>>buscarRespuesta(unaPregunta)
+//hace lo mismo
+
